@@ -1,0 +1,210 @@
+<div class="row col-lg-12 pad">
+  <!-- begining of search pane -->
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle b-red" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+            <!-- /btn-group -->
+            <input type="text" class="form-control b-red" aria-label="...">
+            <span class="input-group-btn ">
+                                <button class="btn btn-default bg-red b-red b-col full" type="button"><i class="fa fa-search fa-lg" aria-hidden="false"></i></button>
+                            </span>
+          </div>
+          <!-- /input-group -->
+        </div>
+        <!-- /.col-lg-6 -->
+      </div>
+    </div>
+    <!-- begining of search pane button -->
+    <div class="col-md-3 npad">
+      <button class="btn btn-default col-lg-12 red" type="submit"> <i class="fa fa-podcast red" aria-hidden="true"></i> post sourcing request</button>
+    </div>
+  </div>
+</div>
+<!-- end of search pane and button div holder 
+            and beginning of maincontent holder -->
+
+<div class="row col-md-12">
+
+
+  <div class="col-md-8 pad">
+    <ul id="progress">
+      <li><i class="fa fa-home fa-lg white" aria-hidden="true"></i></li>
+      <li>Business Directory</li>
+      <li class="active"><%= @category.name %></li>
+    </ul>
+  </div>
+  <!--beginning of left panel -->
+  <div class="col-lg-10 no-pad ">
+    <h5><%= @category.name %></h5>
+
+    <div class="row n-pad">
+      <% @category.children.each do |child_category| %>
+      <div class="col-lg-4 ">
+        <h6><%= link_to child_category.name, category_products_path(@category.id, child_category.id) %></h6>
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+                                <img class="media-object" src="assets/switch.jpg" alt="" class="img-rounded">
+                                </a>
+          </div>
+          <div class="media-body">
+            <ul>
+              <% child_category.children.each do |child| %>
+                <li><%= link_to  child.name, category_path(child) %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+
+  </div>
+  <!--end of left panel beginning of right panel -->
+  <div class="col-lg-2 no-pad top-pad">
+    <div class "row no-pad ">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">latest product</div>
+        <!-- List group -->
+        <ul class="list-group strip">
+          <li class="list-group-item">Agriculture Economical green...</li>
+          <li class="list-group-item">Non Dairy creamer..</li>
+          <li class="list-group-item">food Sweetners, Maltose syr..</li>
+          <li class="list-group-item">Taysa 250ml Japanese Sushi v..</li>
+          <li class="list-group-item">S-American Broiler &amp; Layer ch..</li>
+          <li class="list-group-item">Manufacturer 80-200 mesh D..</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="">
+      <div class="panel panel-default">
+        <div class="panel-heading">Hot Products</div>
+        <div class="panel-body small-pad ">
+          <div class="col-lg-6 no-pad">
+            <div class="media">
+              <div class="media-down">
+                <a href="#">
+                                            <img class="media-object" src="assets/6.jpg" alt="" class="img-rounded">
+                                            </a>
+              </div>
+              <div class="media-body">
+                <ul>
+                  <li><strong> Additives<br>
+                                                Pottasium Sor..</strong></li>
+                  <li>min.order.1ton</li>
+                  <li>Trade Terms: FOB<br> CFR CIF</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 no-pad">
+            <div class="media">
+              <div class="media-down">
+                <a href="#">
+                                            <img class="media-object" src="assets/6.jpg" alt="" class="img-rounded">
+                                            </a>
+              </div>
+              <div class="media-body">
+                <ul>
+                  <li><strong> Sushi <br>Ginger
+                                               in Bott..</strong></li>
+                  <li>min.order.200 boxes</li>
+                  <li>Trade Terms: FOB</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-lg-12 mininav-div">
+      <ul class="row mini-tab" role="tablist">
+        <li role="presentation" class="active col-lg-6"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+        <li role="presentation" class="col-lg-6"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">House</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="row tab-content mini-pad">
+        <div role="tabpanel" class="tab-pane active fade in wide" id="home">
+          <div>
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                                                    <img class="media-object" src="assets/12.jpg" alt="" class="img-rounded">
+                                                    </a>
+              </div>
+              <div class="media-body">
+                <p>Nigeria's top Watch export company sets new record</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane wide fade" id="profile">
+          <div>
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                                                    <img class="media-object" src="assets/10.jpg" alt="" class="img-rounded">
+                                                    </a>
+              </div>
+              <div class="media-body">
+                <p>Nigeria's fabric Watch export company sets new record</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- end of right panel  -->
+
+
+<div class="col-lg-12">
+  <div class="row top-pad ">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6 class="pull-left"><strong><i class="fa fa-envelope-open-o" aria-hidden="true"></i>  Trade Alert: Delivering the latest product trends &amp; News straight to your inbox  </strong></h6>
+        </div>
+        <div class="col-lg-5">
+          <div class="input">
+            <input type="text" class="form-control" placeholder="Your Email" aria-describedby="basic-addon2">
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <button type="button" class="btn col-lg-12 bg-red wyt b-red">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+</div>

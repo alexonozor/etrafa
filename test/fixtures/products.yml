@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  place_of_origin: MyString
+  size: MyString
+  packings: MyText
+  description: MyText
+  features: MyText
+
+two:
+  title: MyString
+  place_of_origin: MyString
+  size: MyString
+  packings: MyText
+  description: MyText
+  features: MyText

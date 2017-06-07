@@ -1,0 +1,2 @@
+class SpecializedIndustrie < ApplicationRecord
+end

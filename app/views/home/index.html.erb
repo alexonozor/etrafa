@@ -1,0 +1,472 @@
+
+    <!-- logo and nav holder ends here -->
+    <!-- begining of search pane and button div holder -->
+    <div class="row col-lg-12 pad">
+        <!-- begining of search pane -->
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle b-red" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="page2.html">page 2</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <input type="text" class="form-control b-red" aria-label="...">
+                            <span class="input-group-btn ">
+                                <button class="btn btn-default bg-red b-red b-col full" type="button"><i class="fa fa-search fa-lg" aria-hidden="false"></i></button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+            </div>
+            <!-- begining of search pane button -->
+            <div class="col-md-3 npad">
+                <button class="btn btn-default col-lg-12 red" type="submit"> <i class="fa fa-podcast red" aria-hidden="true"></i> post sourcing request</button>
+            </div>
+        </div>
+    </div>
+    <!-- end of search pane and button div holder 
+            and beginning of maincontent holder -->
+    <div class="row col-md-12 top-pad">
+        <div class="row">
+            <!--beginning of left panel -->
+
+            <div class="col-lg-2">
+                <h5 class="all-catergories"><strong> All Catergories </strong></h5>
+                <div class="row">
+                    <ul class="first-level">
+                        <% @categories.each do |category| %>
+                            <li class="holding">
+                                <%= link_to(category) do |a|  %>
+                                    <%= category.name %><i class="fa fa-caret-right pull-right" aria-hidden="true"></i>
+                                        <div class="second-row col-lg-12">
+                                            <div class="row design">
+                                                <ul class="col-lg-4">
+                                                    <% category.children.each do |child_category| %>
+                                                    <li><%= link_to child_category.name, category_path(child_category) %></li>
+                                                    <% end %>
+                                                </ul>
+                                                <!--<ul class="col-lg-4">
+                                                    <li><a href="#">Food Sweeteners</a></li>
+                                                    <li><a href="#">Condiment &amp; Seasoning</a></li>
+                                                    <li><a href="#">Farm Facilities &amp; Equipment</a></li>
+                                                    <li class="see-more"><a href="#"><strong>See More Categories</strong></a></li>
+                                                    <li class="quick-title">HOT PRODUCTS:</li>
+                                                    <li class="quick-word"><a href="#">Tomato Paste</a></li>
+                                                    <li class="quick-word"><a href="#">Garlic</a></li>
+                                                    <li class="quick-word"><a href="#">Fertilizer</a></li>
+                                                </ul>-->
+
+                                                <div class="col-lg-4">
+                                                    <a href="#" target="_blank">
+                                                        <img src="assets/2.jpg" alt="Food Additives" class="img-responsive">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </li>
+                            <% end %>
+                                <% end %>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- end of left panel -->
+            <!--beginning of right panel -->
+
+            <div class="col-md-10">
+                <!--beginning of right panel section 1-->
+                <div class="row">
+                    <div class="col-md-12 npad">
+                        <!--beginning of carousel-->
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img src="assets/1.jpg" alt="...">
+                                    <div class="carousel-caption">
+                                        ...
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="assets/1.jpg" alt="...">
+                                    <div class="carousel-caption">
+                                        ...
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="assets/1.jpg" alt="...">
+                                    <div class="carousel-caption">
+                                        ...
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <!--end of carousel-->
+                    </div>
+                </div>
+                <!--beginning of right panel section 1-->
+                <div class="row">
+
+                    <div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs top-nav" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><strong>Sponsored products</strong></a></li>
+                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><strong>Specialised Industries</strong></a></li>
+                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><strong>Hot Items</strong></a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active centad" id="home">
+                                <div class="col-lg-12 pad">
+                                    <div class="row pad ">
+                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
+                                            <p>Cable ties</p>
+                                        </div>
+                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
+                                            <p>IV Mount</p>
+                                        </div>
+                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
+                                            <p>Duvet</p>
+                                        </div>
+                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
+                                            <p>Compressor</p>
+                                        </div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
+                                            <p>Passenger Ellevator</p>
+                                        </div>
+                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
+                                            <p>Plush Tov</p>
+                                        </div>
+                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
+                                            <p>Bathroom Wall<br> Tile</p>
+                                        </div>
+                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
+                                            <p>LED Table Light</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="profile">
+                                <div class="col-lg-12">
+                                    <div class="row pad ">
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Cable ties</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>IV Mount</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Duvet</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Compressor</p>
+                                        </div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Passenger Ellevator</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Plush Tov</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Bathroom Wall<br> Tile</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>LED Table Light</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="messages">
+                                <div class="col-lg-12">
+                                    <div class="row pad ">
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Cable ties</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>IV Mount</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Duvet</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Compressor</p>
+                                        </div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Passenger Ellevator</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Plush Tov</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>Bathroom Wall<br> Tile</p>
+                                        </div>
+                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
+                                            <p>LED Table Light</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 tabbody">
+
+
+
+
+                    </div>
+                </div>
+                <!--beginning of right panel section 2-->
+                <div class="row npad pad">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <!--frame 1-->
+                            <div class="col-md-4 npad">
+                                <img src="assets/onlineex.png" alt="" class="img-responsive full">
+                            </div>
+                            <!--frame 2-->
+                            <div class="col-md-4 ">
+                                <img src="assets/madeinnaija.png" alt="" class="img-responsive full">
+                            </div>
+                            <!-- frame 3 -->
+                            <div class="col-md-4 npad ">
+                                <img src="assets/deal.png" alt="" class="img-responsive full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--beginning of right panel section 1-->
+                <div class="row pad">
+                    <div class="col-md-12  npad">
+                        <img src="assets/delivery.png" alt="" class="img img-responsive wide">
+                    </div>
+                </div>
+            </div>
+            <!-- end of right panel  -->
+        </div>
+
+        <div class="row pad">
+
+            <div class="col-lg-12">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#second-1" aria-controls="second-1" role="tab" data-toggle="tab">Business news</a></li>
+                    <li role="presentation"><a href="#second-2" aria-controls="second-2" role="tab" data-toggle="tab">Trade report</a></li>
+                    <li role="presentation"><a href="#second-3" aria-controls="second-3" role="tab" data-toggle="tab">Industry Analysis Report </a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content pad">
+                    <div role="tabpanel" class="tab-pane fade in active" id="second-1">
+                        <div class="col-lg-12">
+                            <div class="row pad">
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/6.jpg" alt="..." class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Midstream prices to decline before lunar year</h4>
+                                            <p>date: Dec 16, 2016 <br> Tags: multi-si, wafers, polysilicon</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/7.jpg" alt="" class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">China panel markers invest in OLED manufacturing</h4>
+                                            <p>date: Dec 16, 2016 <br> Tags: OLED panels, AMOLED</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/8.jpg" alt="" class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">2016 Refridgerator Industry Analysis Report</h4>
+                                            <p>date: Dec 16, 2016</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="second-2">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/3.jpg" alt="" class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Media heading</h4>
+                                            object description
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/6.jpg" alt="" class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Media heading</h4>
+                                            object description
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/3.jpg" alt="" class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Media heading</h4>
+                                            object description
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="second-3">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/6.jpg" alt="" class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Media heading</h4>
+                                            object description
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/3.jpg" alt="" class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Media heading</h4>
+                                            object description
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="assets/3.jpg" alt="" class="img-rounded">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Media heading</h4>
+                                            object description
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row pad">
+            <div class="col-lg-11">
+
+                <h5 class="n-pad"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Trade Alert: delivering the latest product Trends
+                    &amp; Industry News straight to your inbox</h5>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8">
+                <div class="input">
+                    <input type="text" class="form-control" placeholder="Your Email" aria-describedby="basic-addon2">
+                </div>
+            </div>
+
+            <div class="col-lg-2 ">
+                <button type="button" class="btn btn-block bg-red wyt b-red">Subscribe</button>
+            </div>
+        </div>
+    </div>
+</div>

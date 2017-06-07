@@ -1,0 +1,195 @@
+<div class="row col-md-12">
+    <div class="row">
+        <div class="col-md-2 pad">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="true">
+                                        All Category
+                                        <span class="caret"></span>
+                                    </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">catergory 1</a></li>
+                    <li><a href="#">catergory 2</a></li>
+                    <li><a href="#">catergory 3</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">catergory 4</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10 no-pad top-pad">
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>Business Directory</li>
+                <li>Product</li>
+                <li>Food &amp; Bevarage</li>
+                <li>Seasonings &amp; Condiments</li>
+                <li>Spices &amp; Herb Products</li>
+                <li class="active">Single Spices &amp; Herbs</li>
+            </ol>
+        </div>
+    </div>
+    <div class="col-lg-12 top-pad">
+        <span>
+                                        <label>
+                                            supplier location:
+                                            <span class="dropdown">
+                                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    Country &amp; Region
+                                                    <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Nigeria</a></li>
+            <li><a href="#">Ghana</a></li>
+            <li><a href="#">France</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">United Kingdom</a></li>
+        </ul>
+        </span>
+        Supplier Type: <label><input type="checkbox"> Trade Assurance</label>
+        <label><input type="checkbox"> <i class="fa fa-lemon-o red" aria-hidden="true"></i> Assesed Supplier</label>
+        <label for=""><input type="checkbox"><i class="fa fa-certificate red" aria-hidden="true"></i> Gold Supplier</label>
+        </label>
+
+        </span>
+    </div>
+
+    <!--beginning of left panel -->
+    <div class="row top-pad">
+        <div class="col-md-10">
+
+            <div class="row">
+             <% @child_category_products.each do |product| %>
+                <div class="col-lg-3">
+                    <div class="media">
+                        <div class="media-down">
+                            
+                                <%= link_to (image_tag  product.pictures[0].url, class: "media-object img img-responsive fixed-height"), product_path(product) %>
+                        
+                        </div>
+                        <div class="media-body">
+                            <h5 class="media-heading product-header"><strong><%= truncate product.title, length: 80 %></strong></h5>
+                              <%= number_to_currency product.price  %> - set <%= product.size %>(Min.Order)
+                            <%= link_to  "<i class='fa fa-envelope lg fa-lg pull-left' aria-hidden='true'></i>Contact Supplier".html_safe, send_inquiry_product_path(product), target: "_blank",  class:"btn bg-red wyt b-red" %>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <!--begining of pagination-->
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-5">
+                    <nav aria-label="Page navigation pull-center">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+            <!-- end of pagination begining of trade alert-->
+            <div class="col-lg-12">
+                <div class="row pad">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-11">
+                        <h5 class="n-pad"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Trade Alert: delivering the latest product
+                            Trends &amp; Industry News straight to your inbox</h5>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="Your Email" aria-describedby="basic-addon2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 ">
+                        <button type="button" class="btn btn-block bg-red wyt b-red">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of left panel begining of right panel -->
+        <div class="col-lg-2 no-pad">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="you-may-like">
+                        <div class="you-may-like-header"><strong>You May Like</strong></div>
+                        <div class="media you-may-like-body">
+                            <div class="media-down">
+                                <a href="#">
+                                            <img class="media-object img img-responsive " src="assets/watch.jpg" alt="" class="">
+                                            </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading product-header">fitness bracelet smart<br> Consumer Electronics<br>Other Phones</h5>
+                            </div>
+                        </div>
+
+                        <div class="media you-may-like-body">
+                            <div class="media-down">
+                                <a href="#">
+                                            <img class="media-object img img-responsive " src="assets/camera.jpg" alt="" class="">
+                                            </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading product-header">import mobile phone<br> accessories for <br>iphone 6 &amp; 7 </h5>
+                            </div>
+                        </div>
+
+                        <div class="media you-may-like-body">
+                            <div class="media-down">
+                                <a href="#">
+                                            <img class="media-object img img-responsive " src="assets/gen.jpg" alt="" class="">
+                                            </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading product-header">import high quality<br> generator sets for<br> backup power</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel panel-default marg-left ">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"><strong>Popular Searches</strong></div>
+                        <!-- List group -->
+                        <ul class="list-group strip">
+                            <li class="list-group-item">Dual shock controller</li>
+                            <li class="list-group-item">China Pinball</li>
+                            <li class="list-group-item">Usb Joypad</li>
+                            <li class="list-group-item">China Modchip</li>
+                            <li class="list-group-item">Card Game</li>
+                            <li class="list-group-item">Game accesories</li>
+                            <li class="list-group-item">Video Games</li>
+                            <li class="list-group-item">Home theater Systems</li>
+                            <li class="list-group-item">Home theater Projector</li>
+                            <li class="list-group-item">Arcade Game Machine</li>
+                            <li class="list-group-item">Bluettoth game controller</li>
+                            <li class="list-group-item">Bluetooth Gamepad</li>
+                            <li class="list-group-item">Joystrick for Xbox 360</li>
+                            <li class="list-group-item">Used Game</li>
+                            <li class="list-group-item">Port accessory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- end of right panel  -->
+</div>

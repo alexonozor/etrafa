@@ -1,0 +1,30 @@
+  <!-- logo and nav holder -->
+  <div class="row">
+    <!--logo holder -->
+    <div class="col-md-4">
+      <%= link_to (image_tag  "logo.jpg", class:"img-responsive logo-settings"), root_url %>
+    </div>
+    <!-- mini nav -->
+    <div class="col-md-8">
+        <nav class="nav-link pull-right">
+            <a href="#">product directory</a>
+            <a href="#">supplier discovery</a>
+            <a href="#">trade/exhibition</a>
+          <% unless current_user %>
+            <a href="#"> Login</a>
+            <%= link_to '<i class="fa fa-user fa-lg" aria-hidden="true"></i> log in'.html_safe, login_path %>
+            <span class="dropdown">
+            <a href="#" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                register
+            <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><%= link_to "Supplier", register_path %></li>
+                <li><%= link_to "Buyer", register_path %></li>
+            </ul>
+            </span>
+          <% end %>
+        </nav>
+    </div>
+    </div>
+  <!-- logo and nav holder ends here -->

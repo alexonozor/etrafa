@@ -1,0 +1,17 @@
+<p>Hi <%= @owner.first_name %>, You have a new inquiry on your product</p>
+<p> <%= @product.title %> </p>
+<p>See details</p>
+<p><%= @inquiry[:content] %></p>
+
+<table>
+    <th>
+        <td>Inquiry Request</td>
+        <td>Quantity</td>
+        <td>Type</td>
+    </th>
+    <th>
+        <td><%= @inquiry[:extra_request].join(', ') %></td>
+        <td><%= @inquiry[:quantity] %></td>
+        <td><%= @inquiry[:type] %></td>
+    </th>
+</table>

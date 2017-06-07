@@ -1,0 +1,261 @@
+<div class="row col-md-12">
+  <div class="row">
+    <div class="col-md-12 top-pad">
+      <ol class="breadcrumb no-pad">
+        <li>Supplier Homepage</li>
+        <li>Product</li>
+        <li>Outdoor Products</li>
+        <li>Digital Hunting Camera &amp; Trail Camera &amp; Waterproof Camera</li>
+      </ol>
+    </div>
+  </div>
+
+  <!--beginning of left panel -->
+  <div class="row top-pad">
+    <div class="col-md-10">
+
+      <div class="row">
+        <div class="col-md-4">
+          <%= image_tag  @product.pictures[0].url, class: "fixed-height2 img img-responsive" %>
+            <div class="row">
+              <div class="col-lg-12">
+                <p class="pull-right pad">follow us on:
+                  <span>
+                      <a href="#"><i class="fa fa-facebook-square fa-lg facebook"  aria-hidden="true"></i></a>
+                      <a href="#"><i class="fa fa-google-plus-square fa-lg google-plus" aria-hidden="true"></i></a>
+                      <a href="#"><i class="fa fa-twitter-square fa-lg twitter" aria-hidden="true"></i></a>
+                      <a href="#"><i class="fa fa-linkedin-square fa-lg facebook" aria-hidden="true"></i></a>
+                  </span>
+                </p>
+                </p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+          <h4>
+            <%= @product.title %>
+          </h4>
+          <div class="row">
+            <div class="col-lg-8">
+              <table class="table item-description">
+                <tr>
+                  <td>FOB Price:</td>
+                  <td>Get latest price</td>
+                </tr>
+                <tr>
+                  <td>Min. Order:</td>
+                  <td>
+                    <%= @product.size %> pieces</td>
+                </tr>
+                <tr>
+                  <td>Shipping Location:</td>
+                  <td>
+                    <%= @product.place_of_origin %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Supply Ability:</td>
+                  <td>100,000 PCS/Year</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <button type="button" class="btn btn-block bg-red wyt b-red"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Contact Now</button>
+            </div>
+            <div class="col-lg-4">
+              <button type="button" class="btn btn-block grey pull">Request Sample</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3">
+              <h6><span><i class="fa fa-eercast red" aria-hidden="true"></i> Leave a message</span></h6>
+            </div>
+            <div class="col-lg-2">
+              <h6><span><i class="fa fa-cart-plus" aria-hidden="true"></i> add to cart</span></h6>
+            </div>
+            <div class="col-lg-2">
+              <h6><span><i class="fa fa-star pull-left" aria-hidden="true"></i> favorite</span></h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <h6>request a custom order! have something just for you<br><a href="#" class="fa fa-telegram pull-left" aria-hidden="true"></i> send customized request</a></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Product Description</h2>
+          <h4 class="red">Description</h4>
+          <p style="text-align: justify">
+            <%= @product.description %>
+          </p>
+          <h4 class="red">Features</h4>
+          <p style="text-align: justify">
+            <%= @product.features %>
+          </p>
+          <div>
+            <div class="row">
+              <div class="col-lg-3">
+                <img src="assets/camera.jpg" class="img img-responsive fixed-height" alt="">
+              </div>
+              <div class="col-lg-3">
+                <img src="assets/cable.jpg" alt="" class="img img-responsive fixed-height">
+              </div>
+              <div class="col-lg-3">
+                <img src="assets/bulb.jpg" alt="" class="img img-responsive fixed-height">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <h4>Send your Message to this Supplier</h4>
+              </div>
+              <div class="col-lg-10">
+
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-lg-2 control-label">From:</label>
+                    <div class="col-lg-10">
+                      <input type="email" class="form-control" id="inputEmail3" placeholder="Enter your Email address">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-sm-offset-5 col-sm-10">
+                      <div class="checkbox">
+                        <label>
+                                                            To: <%= @product.user.title %> <%= @product.user.first_name %>
+                                                            </label>
+                      </div>
+                    </div>
+                    <label for="inputPassword3" class="col-lg-2 control-label">Message:</label>
+                    <div class="col-lg-10">
+                      <textarea class="form-control" rows="4" id="inputPassword3" placeholder="we suggest you detail your product requirements and company information here"></textarea>
+                      <div class="col-sm-offset-3 col-sm-10">
+                        <div class="checkbox">
+                          <label>
+                                                            Enter between 20-4,000 characters
+                                                            </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-default bg-red wyt">Send</button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- end of order begining of product description-->
+      <!-- end of order begining of trade alert-->
+      <div class="col-lg-12">
+        <div class="row pad">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-11">
+            <h5>This is not what you are looking for? <span class="red"><i class="fa fa-podcast" aria-hidden="true"></i>  Post Sourcing Request to Source now</span>
+            </h5>
+            <h5 class="n-pad"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Trade Alert: delivering the latest product Trends &amp;
+              Industry News straight to your inbox</h5>
+          </div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-8">
+            <div class="input">
+              <input type="text" class="form-control" placeholder="Your Email" aria-describedby="basic-addon2">
+            </div>
+          </div>
+
+          <div class="col-lg-2 ">
+            <button type="button" class="btn btn-block bg-red wyt b-red">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of left panel begining of right panel -->
+    <div class="col-lg-2 no-pad">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-four-side-bar">
+            <h6>Quintex metal &amp; plastic co. ltd</h6>
+            <p>Guandong China </p>
+            <p>Exporter, Manufacturer, Retailer
+              <br>gold supplier since 2015
+              <br>Assesed Supplier</p>
+            <hr>
+            <p><i class="fa fa-lemon-o red" aria-hidden="true"></i> trade Assurance</p>
+            <p><i class="fa fa-check-circle-o green" aria-hidden="true"></i> Product Quality Proof</p>
+            <p class="text-center"><a href="#" class="red">visit mini site</a></p>
+            <hr>
+            <p>Contact Supplier: P. Onezih<br>Tel. 09034251566</p>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="page-four-side-bar">
+            <h4>You May Like <i class="fa fa-refresh pull-right" aria-hidden="true"></i></h4>
+            <div class="media">
+              <div class="media-down">
+                <a href="#">
+                                                <img class="media-object img img-responsive fixed-height" src="assets/camera.jpg" alt="">
+                                                </a>
+              </div>
+              <div class="media-body">
+                <h5 class="media-heading product-header"><strong>Factory Camera Accessory <br>Shape Phone Clip Mobile</strong></h5>
+              </div>
+            </div>
+
+            <div class="media">
+              <div class="media-down">
+                <a href="#">
+                                                <img class="media-object img img-responsive fixed-height" src="assets/gen.jpg" alt="">
+                                                </a>
+              </div>
+              <div class="media-body">
+                <h5 class="media-heading product-header"><strong>Backup/Standby Generator<br> for everyday Use</strong></h5>
+              </div>
+            </div>
+
+            <div class="media">
+              <div class="media-down">
+                <a href="#">
+                                                <img class="media-object img img-responsive fixed-height" src="assets/fan.jpg" alt="">
+                                                </a>
+              </div>
+              <div class="media-body">
+                <h5 class="media-heading product-header"><strong>Quality home / office fans <br> &amp; Industrial Fans</strong></h5>
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-down">
+                <a href="#">
+                                                <img class="media-object img img-responsive fixed-height" src="assets/watch.jpg" alt="">
+                                                </a>
+              </div>
+              <div class="media-body">
+                <h5 class="media-heading product-header"><strong>sports watch, fitness timer</strong></h5>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- end of right panel  -->
+
+
+
+</div>
+</div>

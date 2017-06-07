@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Etrafa</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Arsenal', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>	
+    <div class="container">
+      <%= render partial: "layouts/navbar" %>
+      <%= yield %>
+      <%= javascript_include_tag 'application',  'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'https://use.fontawesome.com/52e8dbd3d4.js', 'data-turbolinks-track': 'reload' %>
+    </div>
+  </body>
+  <%= render partial: "layouts/footer" %>
+</html>

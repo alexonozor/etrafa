@@ -1,0 +1,61 @@
+<%= form_tag post_inquiry_products_path do  %> 
+    <div class="nav-holder page13">
+        <p><strong>Send Inquiry</strong></p>
+    </div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <%= label_tag :email %>
+                <%= text_field_tag :email, params[:email], class: "form-control",  id: "sellerEmail1", placeholder: "Enter you email" %>
+            </div>
+            <div class="form-group">
+                <label for="password"><strong class="red">*</strong> To</label>
+                <div class="well">
+                    <%= hidden_field_tag :product_owner, @product.user.id  %>
+                    <%= hidden_field_tag :product_id, @product.id  %>
+                    <p><%= @product.user.full_name %></p>
+                    <%= link_to  @product.title, product_path(@product) %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sellerEmail"><strong class="red">*</strong>Subjects</label>
+                 <%= text_field_tag :subject, "Inquiry about #{@product.title}", class: "form-control",  id: "sellerEmail1", placeholder: "Enter you Sujects" %>
+            </div>
+
+            <div class="form-group">
+                <label for="sellerEmail"><strong class="red">*</strong>Extra Request</label> <br>
+                <% ['price', 'Inspection Certificate', 'Product Specifications', 'Company Profile'].each do |extra_request| %>
+                 <label class="checkbox-inline"> <%= check_box_tag 'extra_request[]', extra_request, class: "form-control" -%><%= h extra_request -%></label>       
+                 <% end %>
+               
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="confrimPassword"><strong class="red">*</strong> Quantity</label>
+                        <%= number_field_tag :quantity, params[:quantity], class: "form-control",  id: "sellerEmail1", placeholder: "Qty" %>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="confrimPassword"><strong class="red">*</strong>Qty type</label>
+                        <%= select_tag 'quantity_type', options_for_select(@quantity_types), class:"form-control" %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confrimPassword"><strong class="red">*</strong> Content</label>
+                <%= text_area_tag :content, params[:content], rows: 10, class:"form-control" %>      
+            </div>
+
+            <div class="form-group">
+               <%= submit_tag "Send Inquiry", class: "btn btn-lg btn-danger" %>
+            </div>
+
+        </div>
+    </div>
+<% end %>
