@@ -16,6 +16,10 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    @categories = []
+    5.times do
+      @categories << Category.new
+    end
   end
 
   # GET /categories/1/edit
@@ -29,6 +33,11 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        params["sub_category"].each do |category|
+        if sub_category["name"] != "" || puppy["breed"] != ""
+          Puppy.create(puppy_params(puppy))
+        end
+      end
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else

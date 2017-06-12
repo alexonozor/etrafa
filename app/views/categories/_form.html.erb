@@ -31,6 +31,11 @@
     <%= f.text_field :banner %>
   </div>
 
+<% @categories.each do |sub_category| %>
+  <%= f.fields_for 'sub_category[]', sub_category do |category_form| %>
+    <p><%= category_form.text_field :name %></p>
+  <% end %>
+<% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
