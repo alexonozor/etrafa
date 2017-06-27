@@ -1,4 +1,4 @@
-<%= form_for(category) do |f| %>
+<%= form_for(category, html: { multipart: true }) do |f| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+   <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+  </div>
+
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -21,22 +26,14 @@
     <%= f.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= f.label :picture %>
-    <%= f.text_field :picture %>
-  </div>
 
   <div class="field">
     <%= f.label :banner %>
     <%= f.text_field :banner %>
   </div>
 
-<% @categories.each do |sub_category| %>
-  <%= f.fields_for 'sub_category[]', sub_category do |category_form| %>
-    <p><%= category_form.text_field :name %></p>
-  <% end %>
-<% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
