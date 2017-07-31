@@ -22,7 +22,7 @@
     <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
   </div>
 
-  <select name="categories" name="product[category_ids]" id="select-categories">
+  <select name="product[category_ids][]" id="select-categories">
     <option>Select Categories</option>
   </select>
 
@@ -42,6 +42,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
@@ -57,9 +62,9 @@
 <% end %>
 <input type="text" class="category-input2">
 <input type="text" class="category-input2Name">
-
 <input type="text" class="category-input3">
 <input type="text" class="category-input3Name">
+
 <div  class="category-selector" draggable="true">
   <p class="our-modal-title">Select Category</p>
   <div class="categoryinner">

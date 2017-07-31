@@ -43,8 +43,8 @@
         let value3 = $('.category-input3').val();
 
         var text =  [input2, input3].join(' >> ');
-        var value = [value2, value3].join(',');
-
+        var value = [value2, value3];
+        
         let options =  document.createElement("option");
         let optionsText = document.createTextNode(text);
         
