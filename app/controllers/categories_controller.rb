@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy, :select_category_children]
 
   # GET /categories
   # GET /categories.json
@@ -15,11 +15,12 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = Category.new
+    @categories = Category.roots
   end
 
   # GET /categories/1/edit
   def edit
+    @categories = @category.children
   end
 
   # POST /categories
@@ -29,6 +30,13 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        params["category"]["sub_category"].each do |category|
+        if category["name"] != "" || category["description"] != ""
+          @child_category =  Category.new(category_params(category))
+            @child_category.parent = @category
+            @child_category.save!  
+        end
+      end
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
@@ -68,6 +76,14 @@ class CategoriesController < ApplicationController
     @child_category_products = Category.find(params["child_category"]).products
   end
 
+  def select_category_children
+    @sub_category = params[:sub_category]
+    if @category.has_children?
+      @categories = @category.children
+    end
+  end
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
@@ -79,3 +95,6 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:name, :description, :picture, :banner)
     end
 end
+
+
+

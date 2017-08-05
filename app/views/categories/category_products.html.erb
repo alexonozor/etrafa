@@ -56,15 +56,12 @@
     <!--beginning of left panel -->
     <div class="row top-pad">
         <div class="col-md-10">
-
             <div class="row">
              <% @child_category_products.each do |product| %>
                 <div class="col-lg-3">
                     <div class="media">
-                        <div class="media-down">
-                            
-                                <%= link_to (image_tag  product.pictures[0].url, class: "media-object img img-responsive fixed-height"), product_path(product) %>
-                        
+                        <div class="media-down">   
+                          <%= link_to (image_tag  product.pictures[0].url, class: "media-object img img-responsive fixed-height"), product_path(product) %>
                         </div>
                         <div class="media-body">
                             <h5 class="media-heading product-header"><strong><%= truncate product.title, length: 80 %></strong></h5>

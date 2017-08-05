@@ -22,6 +22,10 @@
     <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
   </div>
 
+  <select name="product[category_ids][]" id="select-categories">
+    <option>Select Categories</option>
+  </select>
+
   <div class="field">
     <%= f.label :place_of_origin %>
     <%= f.text_field :place_of_origin %>
@@ -38,6 +42,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
@@ -46,8 +55,38 @@
     <%= f.label :features %>
     <%= f.text_area :features %>
   </div>
-
+  
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<input type="text" class="category-input2">
+<input type="text" class="category-input2Name">
+<input type="text" class="category-input3">
+<input type="text" class="category-input3Name">
+
+<div  class="category-selector" draggable="true">
+  <p class="our-modal-title">Select Category</p>
+  <div class="categoryinner">
+    <div class="category">
+      <ul id="category1">
+        <% Category.roots.each do |category| %>
+          <li data-category="<%= category.id %>"><%= link_to category.name, select_category_children_path(category), remote: true, class: 'categories' %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="category">
+      <ul id="category2">
+      </ul>
+    </div>
+    <div class="category">
+      <ul id="category3"> 
+        
+      </ul>
+    </div>
+  </div>
+    <button class="btn btn-default cancel-button pull-right">Cancel</button>
+    <button class="btn btn-danger select-button pull-right" disabled="disabled">Select</button>
+</div>
+<div id="overlay" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+

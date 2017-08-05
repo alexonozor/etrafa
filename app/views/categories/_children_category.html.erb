@@ -1,0 +1,30 @@
+<% @categories.each do |category| %>
+    <li class="subCategories" data-subcategory="<%= category.id %>" data-subcategoryname="<%= category.name %>"><%=link_to category.name, select_category_children_path(category, sub_category: true),  remote: true %></li>
+<% end %>
+
+<script>
+    $(function() {
+      $('#category3 li').click(function() {
+        $('#category3 li').removeClass('active');
+        $(this).addClass('active');
+        let category3 = $(this).data('subcategory');
+        let category3name = $(this).data('subcategoryname');
+        $('.category-input3').val(category3)
+        $('.category-input3Name').val(category3name)
+      })
+    })
+
+    $(function() {
+        $('#category2 li').click(function() {
+            $('.category-input3').val('')
+            $('.category-input3Name').val('')
+            $('#category2 li').removeClass('active');
+            $(this).addClass('active');
+            let category2 = $(this).data('subcategory');
+            let category2Name = $(this).data('subcategoryname');
+            $('.category-input2Name').val(category2Name)
+            $('.category-input2').val(category2)
+            $('.select-button').removeAttr('disabled');
+        })
+    })
+</script>

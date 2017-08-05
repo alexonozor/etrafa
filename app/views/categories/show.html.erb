@@ -55,14 +55,12 @@
         <h6><%= link_to child_category.name, category_products_path(@category.id, child_category.id) %></h6>
         <div class="media">
           <div class="media-left">
-            <a href="#">
-                                <img class="media-object" src="assets/switch.jpg" alt="" class="img-rounded">
-                                </a>
+            <%= image_tag child_category.picture %>
           </div>
           <div class="media-body">
             <ul>
-              <% child_category.children.each do |child| %>
-                <li><%= link_to  child.name, category_path(child) %></li>
+              <% child_category.children.limit(5).each do |child| %>
+                <li><%= link_to child.name, category_products_path(@category.id, child) %></li>
               <% end %>
             </ul>
           </div>

@@ -1,0 +1,11 @@
+<% unless @categories.nil? %>
+  <% if @sub_category.nil? %>
+    $('.categories').click(function() {
+      $('#category2').empty();
+      $('#category3').empty();  
+    })
+    $('#category2').html("<%= j (render 'children_category') %>");
+  <% else %>
+    $('#category3').html("<%= j (render 'children_category') %>");
+  <% end %>
+<% end %>
