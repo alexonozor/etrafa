@@ -19,6 +19,10 @@ class CategoriesController < ApplicationController
     @category_id = params["category_id"] 
     @category = Category.new
     @categories = Category.roots
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /categories/1/edit
