@@ -16,8 +16,62 @@
 //= require_tree .
 
 
+
+
+
+    $(function() {
+      $('#posting_source_category_ids').click(function() {
+        $('#overlay').show();
+        $('.category-selector').show();
+      })
+
+      $('#category1 li').click(function() {
+        $('#category1 li').removeClass('active');
+        $(this).addClass('active');
+        $('.select-button').attr('disabled', true);
+        $('.category-input2').val('');
+        $('.category-input3').val('');
+        $('.category-input3Name').val('');
+        $('.category-input2Name').val('');
+      })
+
+      $('.select-button').click(function() {
+        let input2 = $('.category-input2Name').val();
+        let input3 = $('.category-input3Name').val();
+
+        let value2 = $('.category-input2').val();
+        let value3 = $('.category-input3').val();
+
+        var text =  [input2, input3].join(' >> ');
+        var value = [value2, value3];
+        
+        let options =  document.createElement("option");
+        let optionsText = document.createTextNode(text);
+          console.log(optionsText)
+        options.appendChild(optionsText)
+        console.log(options)
+        let select = document.getElementById('posting_source_category_ids');
+        console.log(select);
+        options.setAttribute("selected", "selected");
+        options.setAttribute("value", value);
+
+        select.add(options);
+        $('#overlay').hide();
+        $('.category-selector').hide();
+      })
+
+
+      $('.cancel-button').click(function() {
+        $('#overlay').hide();
+        $('.category-selector').hide();
+      })
+    })
+
+
+
+
    $(function() {
-      $('#select-categories').click(function() {
+      $('#product_category_ids').click(function() {
         $('#overlay').show();
         $('.category-selector').show();
       })
@@ -49,7 +103,7 @@
         let optionsText = document.createTextNode(text);
         
         options.appendChild(optionsText)
-        let select = document.getElementById('select-categories');
+        let select = document.getElementById('product_category_ids');
 
         options.setAttribute("selected", "selected");
         options.setAttribute("value", value);
@@ -65,5 +119,3 @@
         $('.category-selector').hide();
       })
     })
-
-

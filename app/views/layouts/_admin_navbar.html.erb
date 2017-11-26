@@ -1,0 +1,38 @@
+  <!-- logo and nav holder -->
+  <div class="row">
+    <!--logo holder -->
+    <div class="col-md-4">
+      <%= link_to (image_tag  "logo.jpg", class:"img-responsive logo-settings"), root_url %>
+    </div>
+    <!-- mini nav -->
+    <div class="col-md-8">
+        <nav class="nav-link pull-right">
+            <a href="#">product directory</a>
+            <a href="#">supplier discovery</a>
+            <a href="#">trade/exhibition</a>
+          <% unless current_user %>
+            <%= link_to '<i class="fa fa-user fa-lg" aria-hidden="true"></i> log in'.html_safe, login_path %>
+            <%= link_to "Sign up", register_path %>
+          <% end %>
+        </nav>
+    </div>
+    </div>
+  <!-- logo and nav holder ends here -->
+<div class="row">
+    <div class="col-lg-5"><h2 class="red">Private Supplier Catalog</h2></div>
+    <div class="col-lg-4 top-pad"><p class="top-pad text-right">Hello <i><%= current_user.full_name %></i></p></div>
+    <div class="col-lg-3 top-pad"><p class="top-pad text-right">Super Administrator (Noty you? <a href="#" class="blue">Sign In</a>)</p></div>
+</div>
+<div class="row">
+    <div class="col-md-12 top-pad">
+            <nav class="page16 nav-holder">
+                <%= link_to "Product", suppliyer_panel_products_path  %>
+                <%= link_to "Company", suppliyer_panel_company_path  %>
+                <a href="#">Reports</a>
+                <a href="#">Message Center <strong class="red">NEW!</strong></a>
+                <a href="#">Trade Shows</a>
+                <a href="#">More Features</a>
+                <a href="#"><span class="red">Feedback</span></a>
+            </nav>
+        </div>
+</div>

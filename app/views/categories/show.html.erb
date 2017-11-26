@@ -1,39 +1,4 @@
-<div class="row col-lg-12 pad">
-  <!-- begining of search pane -->
-  <div class="row">
-    <div class="col-md-9">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default dropdown-toggle b-red" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div>
-            <!-- /btn-group -->
-            <input type="text" class="form-control b-red" aria-label="...">
-            <span class="input-group-btn ">
-                                <button class="btn btn-default bg-red b-red b-col full" type="button"><i class="fa fa-search fa-lg" aria-hidden="false"></i></button>
-                            </span>
-          </div>
-          <!-- /input-group -->
-        </div>
-        <!-- /.col-lg-6 -->
-      </div>
-    </div>
-    <!-- begining of search pane button -->
-    <div class="col-md-3 npad">
-      <button class="btn btn-default col-lg-12 red" type="submit"> <i class="fa fa-podcast red" aria-hidden="true"></i> post sourcing request</button>
-    </div>
-  </div>
-</div>
-<!-- end of search pane and button div holder 
-            and beginning of maincontent holder -->
+
 
 <div class="row col-md-12">
 
@@ -41,7 +6,7 @@
   <div class="col-md-8 pad">
     <ul id="progress">
       <li><i class="fa fa-home fa-lg white" aria-hidden="true"></i></li>
-      <li>Business Directory</li>
+      <li>Browser Directory</li>
       <li class="active"><%= @category.name %></li>
     </ul>
   </div>
@@ -55,7 +20,7 @@
         <h6><%= link_to child_category.name, category_products_path(@category.id, child_category.id) %></h6>
         <div class="media">
           <div class="media-left">
-            <%= image_tag child_category.picture %>
+            <%= link_to (image_tag child_category.picture.url(:thumb)), category_products_path(@category.id, child_category) if child_category.picture.url.present?  %>
           </div>
           <div class="media-body">
             <ul>

@@ -1,4 +1,4 @@
-<div class="page15 container">
+
   <%= simple_form_for(user, html: { class: 'form-horizontal' }) do |f| %>
     <% if user.errors.any? %>
       <div id="error_explanation">
@@ -14,23 +14,25 @@
         </ul>
       </div>
       <% end %>
-        <div class="nav-holder page13">
-          <p><strong>Registeration Details</strong></p>
-        </div>
-        <div class="row">
-          <div class="col-lg-1"></div>
-          <div class="col-lg-6">
-            <div class="form-group">
-              <%= f.input :email, input_html: { class: "form-control", id: "sellerEmail1" }, placeholder: "Email" %>
-            </div>
-            <div class="form-group">
-              <%= f.input :password, input_html: { class: "form-control", id: "password" }, placeholder: "Password" %>
-            </div>
-            <div class="form-group">
-              <%= f.input :password_confirmation, input_html: { class: "form-control", id:"confirmPassword" }, placeholder:"Confirm Password" %>
+      <% if user.new_record? %>
+          <div class="nav-holder page13">
+            <p><strong>Registeration Details</strong></p>
+          </div>
+          <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <%= f.input :email, input_html: { class: "form-control", id: "sellerEmail1" }, placeholder: "Email" %>
+              </div>
+              <div class="form-group">
+                <%= f.input :password, input_html: { class: "form-control", id: "password" }, placeholder: "Password" %>
+              </div>
+              <div class="form-group">
+                <%= f.input :password_confirmation, input_html: { class: "form-control", id:"confirmPassword" }, placeholder:"Confirm Password" %>
+              </div>
             </div>
           </div>
-        </div>
+       <% end %> 
         <div class="nav-holder page13">
           <p><strong> User Details</strong></p>
         </div>
@@ -56,7 +58,10 @@
 
 
             <div class="form-group">
-              <%= f.input :job_title, input_html: { class:"form-control" }, collection: [ "Teacher", "Farmer", "Doctor" ] %>
+              <%= f.input :job_title, input_html: { class:"form-control" }, collection: [ "Teacher", "Farmer", "Doctor" ], include_blank: false %>
+            </div>
+            <div class="form-group">
+              <%= f.input :account_type,  collection: [['Buyer', "buyer"], ['Suppliyer', "suppliyer"]], include_blank: false, input_html: { class: "form-control" }   %>
             </div>
 
             <div class="form-group">
@@ -88,42 +93,20 @@
 
           </div>
         </div>
-        <div class="nav-holder page13">
-          <p><strong>User Business Details</strong></p>
-        </div>
-        <div class="row">
-          <div class="col-lg-1"></div>
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="keyProductCatergory" for="sellerrKeyProductCatergory"><strong class="red">*</strong> Key Product Catergory</label>
-              <select class="form-control" id="sellerKeyProductCatergory">
-                            <option>Key Product Catergory</option>
-                            <option>food item</option>
-                            <option>Machines</option>
-                            <option>construction</option>
-                            <option>electricals</option>
-                            <option>Electronics</option>
-                        </select>
-            </div>
-          </div>
-        </div>
+       
         <div class="row">
           <div class="col-lg-1"></div>
           <div class="checkbox col-lg-11">
             <label>
-                            <input type="checkbox" value="" checked>
-                            I confirm that i have read and understood the privacy policy and i expressly give my consent to<br>the collection,use and disclosure of my personal data by you for the purpose set out in the<br>privacy policy.
-                        </label>
+                <input type="checkbox" value="" checked>
+                I confirm that i have read and understood the privacy policy and i expressly give my consent to<br>the collection,use and disclosure of my personal data by you for the purpose set out in the<br>privacy policy.
+            </label>
           </div>
         </div>
         <div class="row"> 
           <div class="col-lg-1">
             <%= f.button :submit, "Submit",  class:"btn btn-primary btn-lg center"  %>
-          
-            <div class="col-lg-6">
-            </div>
           </div>
         </div>
         <% end %>
-</div>
 

@@ -16,7 +16,7 @@
 
       <div class="row">
         <div class="col-md-4">
-          <%= image_tag  @product.pictures[0].url, class: "fixed-height2 img img-responsive" %>
+          <%= image_tag  @product.primary_picture.url, class: "fixed-height2 img img-responsive" %>
             <div class="row">
               <div class="col-lg-12">
                 <p class="pull-right pad">follow us on:
@@ -98,6 +98,11 @@
           <p style="text-align: justify">
             <%= @product.features %>
           </p>
+         <div>
+          <% for picture in @product.pictures %>
+           <%= image_tag  picture.url, class: "fixed-height2 img img-responsive" %>
+          <% end %>
+         </div> 
           <div>
             <div class="row">
               <div class="col-lg-3">

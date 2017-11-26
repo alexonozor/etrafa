@@ -1,92 +1,517 @@
-<%= form_for(product, html: { multipart: true }) do |f| %>
+
+<input type="hidden" class="category-input2">
+<input type="hidden" class="category-input2Name">
+<input type="hidden" class="category-input3">
+<input type="hidden" class="category-input3Name">
+
+<div  class="category-selector" draggable="true">
+<p class="our-modal-title">Select Category</p>
+<div class="categoryinner">
+    <div class="category">
+        <ul id="category1">
+            <% Category.roots.each do |category| %>
+            <li data-category="<%= category.id %>">
+                <%= link_to category.name, select_category_children_path(category), remote: true, class: 'categories' %>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+<div class="category">
+<ul id="category2">
+</ul>
+</div>
+<div class="category">
+<ul id="category3"> 
+
+</ul>
+</div>
+</div>
+<button class="btn btn-default cancel-button pull-right">Cancel</button>
+<button class="btn btn-danger select-button pull-right" disabled="disabled">Select</button>
+</div>
+<div id="overlay" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+
+
+
+  
+
+<div class="row">
+<div class="col-lg-6"><h2 class="red">Create/Edit Product Profile</h2></div>
+<div class="col-lg-2 top-pad"><p class="top-pad text-left blue">See a Sample Form</p></div>
+<div class="col-lg-2 top-pad"><p class="top-pad text-right blue">watch tutorial</p></div>
+<div class="col-lg-2 top-pad"><p class="top-pad text-right red">* required</p></div>
+</div>
+<div class="col-lg-12 no-pad">
+<p >
+By providing key product information you can getmore enquiry opportunity, we recommend enhancing your product information in the following ways:<br>Besides the required product information, please provide other excluded key information(s) like (<strong>Product Certification, MOQ and FOB Price</strong>).<br>Provide At least 17 pieces Product information.
+</p>
+
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<%= simple_form_for(product, html: { multipart: true }) do |f| %>
+
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
       <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
-  </div>
-
-  <select name="product[category_ids][]" id="select-categories">
-    <option>Select Categories</option>
-  </select>
-
-  <div class="field">
-    <%= f.label :place_of_origin %>
-    <%= f.text_field :place_of_origin %>
-  </div>
-
-  <div class="field">
-    <%= f.label :size %>
-    <%= f.text_field :size %>
-  </div>
-
-  <div class="field">
-    <%= f.label :packings %>
-    <%= f.text_area :packings %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :features %>
-    <%= f.text_area :features %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-<input type="text" class="category-input2">
-<input type="text" class="category-input2Name">
-<input type="text" class="category-input3">
-<input type="text" class="category-input3Name">
-
-<div  class="category-selector" draggable="true">
-  <p class="our-modal-title">Select Category</p>
-  <div class="categoryinner">
-    <div class="category">
-      <ul id="category1">
-        <% Category.roots.each do |category| %>
-          <li data-category="<%= category.id %>"><%= link_to category.name, select_category_children_path(category), remote: true, class: 'categories' %></li>
-        <% end %>
-      </ul>
+    <div class="nav-holder page13"><p><strong>Primary Product Information</strong></p></div>
+    <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-6">
+    <div class="form-group">                                   
+        <%= f.input :category_ids, input_html: { name: "product[category_ids][]" }, as: :select, prompt: 'Select Categories', collection: ['-click here-'], label: 'Product Catergory',  class: "form-control", id:"select-categories" %>
     </div>
-    <div class="category">
-      <ul id="category2">
-      </ul>
+    <div class="form-group">
+        <%= f.input :title, placeholder: "Product Name and Description", label: 'Product Name And Short Description',  class: "form-control" %>
     </div>
-    <div class="category">
-      <ul id="category3"> 
+
+    <div class="form-group">
+        <%= f.input :description, label: 'Describe this product', as: :text, placeholder: "Describe this product" %>
+    </div>  
+    <div class="form-group">
+        <%= f.input :key_word, placeholder: "Keyword 1, keyword 2", label: 'Product Keyword',  class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.input :model_number, placeholder: "Model Number (if any)", label: 'Model Number',  class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label for="productName"><strong class="red">*</strong> Primary Product Image</label>
+        <div class="image-placeholder"><img src="assets/camera.png" alt="" class="wide"></div>
+        <%= f.input :primary_picture, as: :file, label: false, input_html: {  accept: "image/jpeg, image/jpg, image/gif, image/png" } %>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="productName">Secondary Product Image (10 pictures max)</label>
+                <div class="image-placeholder"><img src="assets/camera.png" alt="" class="wide"></div>
+                <%= f.input :pictures, as: :file, label: false, prompt: 'You can select more than one pictures',  input_html: { multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" } %>
+            </div>
+        </div>
         
-      </ul>
+        <div class="col-lg-12"> <p class="text-justify">you must be between one and six stars supplier to upload additional product image. if  you would like to display your products from more angles, upgrade your export marketing package today</p></div>
     </div>
-  </div>
-    <button class="btn btn-default cancel-button pull-right">Cancel</button>
-    <button class="btn btn-danger select-button pull-right" disabled="disabled">Select</button>
-</div>
-<div id="overlay" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <div class="form-group">
+        <%= f.input :features, label: 'Key Specification / special features', as: :text, placeholder: "enter Key specification and or specifications of your product" %>
+    </div>                                    
+
+    </div>
+    </div>
+    <div class="nav-holder page13"><p><strong> Payment and Delivery Information</strong></p></div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+    <div class="col-lg-6">
+        <strong class="red">Benefits:</strong> helps buyers to calculate product's Landed cost, to quickly filter out any unsuitable suppliers<br>Shorten the enquiry proccess and gets you more meaningful inquiries
+        <div class="form-group">
+            <div class="row">
+                <label class="col-lg-12 top-pad" for="sellerFullName">FOB Price:</label>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-1">A)</div>  
+            <div class="col-lg-11">   
+                <div class="form-group">
+                    <%= f.input :minimum_order_quantity, label: 'Minimum Order Quantity', placeholder: "Enter the minimum order required" %>
+                </div>                                                  
+                <div class="form-group">
+                    <%= f.input :unit_of_measure, as: :select, collection: ['kilogram', 'liter', 'tonne', 'unit', 'cartons', 'meters'],  label: 'Unit Of Measure', prompt: "Unit of Measure" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-1">B)</div>  
+            <div class="col-lg-11">                                                     
+                <div class="form-group">
+                    <p>Please Select how you want to Display your FOB price</p>
+                
+                    <%= f.input :fob_price_base_on_quantity, as: :boolean, checked_value: true, unchecked_value: false, label: 'Specify FOB price Based on Quantity' %>
+                        
+                    <p>(Tips: Buyers Prefer to Know your FOB price by quantity so they can better estimate the total cost)</p>
+                    <div class="form-group">
+                        <div class="row ">
+                            <label class="col-lg-6"  for="sellerDefaultTomcq">Quantity</label>
+                            <label class="col-lg-6"  for="sellerFobPricePerNaira">FOB Price</label>                                                            
+                            <div class="col-xs-4">
+                                <%= f.input :fob_quantity, label: false, placeholder: "Default to MCQ" %>
+                            </div>
+                            <div class="col-xs-2">
+                                <%= f.input :fob_unit, label: false, placeholder: "Unit" %>
+                            </div>
+                            <div class="col-xs-3">
+                                <%= f.input :price, label: false, placeholder: "Fob Price" %>
+                            </div>
+                            <div class="col-xs-3 small-top-pad no-pad">
+                                Naira / Naira per Unit
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <div class="row ">
+                                <div class="checkbox col-lg-12">
+                                <%= f.input :single_fob_price_range, as: :boolean,  checked_value: true, unchecked_value: false, label: 'Specify a single FOB price range' %>
+                            </div>                                                         
+                            <div class="col-xs-4">
+                                <%= f.input :fob_minimum_price, placeholder: "Minimum price" %>
+                            </div>
+                            <div class="col-xs-1 small-top-pad">
+                                to
+                            </div>
+                            <div class="col-xs-4">
+                                <%= f.input :fob_maximum_price,  placeholder: "Maximum price" %>
+                            </div>
+                            <div class="col-xs-3 small-top-pad no-pad ">
+                                Naira / Naira per Unit
+                            </div>                                                            
+                        </div>
+                        <%# <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="">
+                            I dont want to disclose my FOB price
+                        </label>
+                    </div> %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <%= f.input :consignment_weight, label: 'Consignment Weight', placeholder: "enter Weight" %>
+                </div>
+                <div class="col-xs-6">
+                <%= f.input :weight_unit, collection: ['Kg', 'Mg', 'Tonne'], label: 'Unit', prompt: "Select Unit" %>
+                </div>
+            </div>
+            
+        </div>                     
+    <%# <div class="form-group">
+            <div class="row">
+                <label class="col-lg-12" for="sellerFOBPort">FOB Port</label>
+                <div class="col-xs-12">
+                    <select class="form-control" id="sellerFOBPort">
+                        <option>Select FOB Port</option>
+                        <option>Nigeria</option>
+                        <option>United Kingdom</option>
+                        <option>United States of America</option>
+                    </select>
+                </div>                                                
+            </div>
+            <div class="row top-pad">
+                
+                <div class="col-xs-4 small-top-pad">                                                    
+                    <input type="checkbox" value="">
+                    Enter Other FOB port                                                   
+                </div>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" placeholder="enter Further details" id="sellerAdditionalBusinessAddress">
+                </div>
+            </div>
+        </div> %>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-5">
+                    <%= f.input :order_leading_start_time,   html5: true,  label: 'Order Lead time start range' %>
+                </div>
+                <div class="col-xs-1 small-top-pad">
+                    to
+                </div>
+                <div class="col-xs-6">
+                    <%= f.input :order_leading_end_time, html5: true,  label: 'Order Lead time end range' %>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-lg-12" for="sellerFOBPort">Payment Method</label>
+                <div class="col-xs-12">
+                    <select class="form-control" id="sellerFOBPort">
+                        <option>Select Payment Method</option>
+                        <option>V-Pay</option>
+                        <option>E-wallet</option>
+                        <option>Mastercard</option>
+                    </select>
+                </div>                                                
+            </div>
+            <%# <div class="row top-pad">
+                
+                <div class="col-xs-5 small-top-pad">                                                    
+                    <input type="checkbox" value="">
+                    Enter Other Payment Method                                                   
+                </div>
+                <div class="col-xs-7">
+                    <input type="text" class="form-control" placeholder="Enter Other Payment Method" id="sellerEnterOtherPaymentMethod">
+                </div>
+            </div> %>
+        </div>
+    </div>
+    </div>
+    <div class="nav-holder page13"><p><strong>Sample Policy</strong></p></div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <%= f.input :sample_availability,  as: :radio_buttons,  label: 'Sample Availability' %>
+                </div>
+        <div class="row"> 
+            <div class="col-lg-11">   
+                <div class="form-group">
+                    <%= f.input :sample_policy,  as: :text,  label: 'Enter your own Sample Policy', placeholder: "Enter your own Sample Policy here" %>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <%= f.input :sample_cost,  label: 'Sample cost', placeholder: "Enter samplecost" %>
+            </div>
+            <div class="col-lg-2 small-top-pad">
+                <strong>NG Naira</strong> 
+            </div>
+            <div class="col-xs-4 small-top-pad"> 
+            <%= f.input :choose_not_disclose,  label: ' Choose not to Disclose'%>                                                             
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="nav-holder page13"><p><strong>Additional Product Information</strong></p></div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+            <div class="col-lg-6">
+            <p class="red"> Futher diffrenciate your product to increase buyer interest</p>
+                <div class="form-group">
+                    <%= f.input :brand_name,  label: 'Brand Name', placeholder: "Enter your Brand Name" %>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <%= f.input :country, selected: 'NG', disabled: true, label: 'Country Of Origin' %> 
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <%= f.input :state_of_origin, collection: ['Lagos', 'Ibadan'], prompt: 'State Of Origin',  label: 'State Of Origin' %> 
+                        </div>
+                    </div>
+                </div>
+                <%# <div class="form-group">
+                    <label for="keyProductCatergory" class="col-lg-12 no-pad">Primary Competitive Advantages</label>
+                    <div class="row">
+                        <div class="col-lg-4">                                         
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Brand name parts
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    experienced staff
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    international approvals
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="" >
+                                    Product Features
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Reputation
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Electronic Link
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Quality approval
+                                </label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-4">                                         
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Country of Origin
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Form A
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Military Specifications
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="" >
+                                    Product Performance
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Service
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Guarantee/Warranty
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Others
+                                </label>
+                            </div>
+                            
+                        </div> 
+                        <div class="col-lg-4">                                         
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Distributorship Offered
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Green Product
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Packaging
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="" >
+                                    Prompt Delivery
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Small Orders Accepted
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Price
+                                </label>
+                            </div>
+                            
+                        </div>   
+                    </div>
+                </div> %>
+                <%# <div class="form-group">
+                    <label for="keyProductCatergory" class="col-lg-12 no-pad">Main Export Market(s)</label>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Africa
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Asia
+                                </label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    North / South America
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Australia
+                                </label>
+                            </div>
+                            
+                        </div> 
+                        <div class="col-lg-4">                                         
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">
+                                    Europe
+                                </label>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="SellerSamplePolicy">Others</label>
+                            <input type="text" class="form-control" id="sellerOtherRegion" placeholder="Enter your region if its not listed">
+                        </div>
+                        </div>  
+                    </div>
+                </div> %>
+        </div>
+        </div>
+            <%= f.button :submit, "Save &amp; Submit".html_safe, class:"btn btn-success  wyt" %>
+            <%= f.button :submit, "Save".html_safe, class:"btn btn-info  wyt" %>
+            <%= link_to "Cancel", suppliyer_panel_path,  :data => {:confirm => 'Are you sure?'},   class:"btn btn-default bg-red wyt" %>
+
+
+    </div>
+    </div>
+<% end %>
+
+
 

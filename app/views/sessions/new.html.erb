@@ -1,13 +1,78 @@
-<h1>Log in</h1>
+<!-- logo and nav holder ends here -->
+            
+                <div class="row login">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-5 floating-pad">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 class="text-center"><strong>Login to Access Your Private Supplier Catalog</strong></h5>
+                            </div>
+                            <div class="col-lg-12">
+                              
+                                    <%= form_tag sessions_path, class:"form-horizontal" do %>
+                                    <div class="form-group has-feedback">
+                                        <label for="Username" class="col-sm-4 control-label">Email (or Username)</label>
+                                        <div class="col-sm-7">
+                                        <%= text_field_tag :email, params[:email], class:"form-control b-red", id:"inputEmail3", placeholder:"Email or Username" %>
+                                        <span class="glyphicon glyphicon-user form-control-feedback blue" aria-hidden="true" ></span>                                        
+                                        </div>
+                                    </div>
 
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
-<% end %>
+                                    <div class="form-group has-feedback">
+                                        <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
+                                        <div class="col-sm-7">
+                                          <%= password_field_tag :password, nil, class: "form-control b-red", id:"inputEmail3", placeholder:"Password" %>
+                                        <span class="glyphicon glyphicon-lock form-control-feedback blue" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-4 col-sm-12">
+                                        <div class="checkbox">
+                                            <label class="red">
+                                            <input type="checkbox"> <strong>Remember me</strong>
+                                            </label>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-6 col-sm-10">
+                                          <%= submit_tag "Log in", class: "btn btn-default bg-red" %>
+                                        </div>                                        
+                                    </div>
+                                <% end %>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="row top-pad">
+                                    <div class="col-lg-6">
+                                        <p>New? <%= link_to "<strong>Register Now!</strong>".html_safe,  register_path, class:"blue"  %></p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p class="text-right">Forgot Password? <a href="#" class="blue"><strong>Reset it Now!</strong></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="row top-pad">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-5 top-pad">
+                            
+                            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <p class="red text-center security-head"><strong>Important Security Tips! <i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></strong></p>
+                            </a>
+                            <div class="collapse" id="collapseExample">
+                                <div class="well">
+                                        <ol>    
+                                            <li>Ensure that the URL address on the address bar of your browsetr begins with "HTTPS"</li>
+                                            <li>Look for the padlock symbol either on the address bar or on the status bar but not within the page. Verify the security by clicking on the padlock</li>
+                                            <li>Do not enter login or sensitive details on any pop-upwindow</li>
+                                        </ol>
+                                </div>
+                            </div>
+
+                            
+                            
+                        </div>
+                    </div>

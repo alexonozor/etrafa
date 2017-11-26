@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy, :select_category_children]
+  layout "suppliyer", only: [:suppliyer_panel_categories]
 
   # GET /categories
   # GET /categories.json
@@ -15,6 +16,8 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
+    @category_id = params["category_id"] 
+    @category = Category.new
     @categories = Category.roots
   end
 
@@ -27,17 +30,9 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
-        params["category"]["sub_category"].each do |category|
-        if category["name"] != "" || category["description"] != ""
-          @child_category =  Category.new(category_params(category))
-            @child_category.parent = @category
-            @child_category.save!  
-        end
-      end
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to :back, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -82,6 +77,10 @@ class CategoriesController < ApplicationController
       @categories = @category.children
     end
   end
+
+  def suppliyer_panel_categories
+    render 'users/suppliyers/suppliyer_panel_categories'
+  end  
   
 
   private

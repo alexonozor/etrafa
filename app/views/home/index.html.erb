@@ -1,42 +1,4 @@
 
-    <!-- logo and nav holder ends here -->
-    <!-- begining of search pane and button div holder -->
-    <div class="row col-lg-12 pad">
-        <!-- begining of search pane -->
-        <div class="row">
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle b-red" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="page2.html">page 2</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                            <input type="text" class="form-control b-red" aria-label="...">
-                            <span class="input-group-btn ">
-                                <button class="btn btn-default bg-red b-red b-col full" type="button"><i class="fa fa-search fa-lg" aria-hidden="false"></i></button>
-                            </span>
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                    <!-- /.col-lg-6 -->
-                </div>
-            </div>
-            <!-- begining of search pane button -->
-            <div class="col-md-3 npad">
-                <button class="btn btn-default col-lg-12 red" type="submit"> <i class="fa fa-podcast red" aria-hidden="true"></i> post sourcing request</button>
-            </div>
-        </div>
-    </div>
-    <!-- end of search pane and button div holder 
-            and beginning of maincontent holder -->
     <div class="row col-md-12 top-pad">
         <div class="row">
             <!--beginning of left panel -->
@@ -53,24 +15,12 @@
                                             <div class="row design">
                                                 <ul class="col-lg-4">
                                                     <% category.children.each do |child_category| %>
-                                                    <li><%= link_to child_category.name, category_path(child_category) %></li>
+                                                    <li><%= link_to child_category.name, category_products_path(category, child_category) %></li>
                                                     <% end %>
                                                 </ul>
-                                                <!--<ul class="col-lg-4">
-                                                    <li><a href="#">Food Sweeteners</a></li>
-                                                    <li><a href="#">Condiment &amp; Seasoning</a></li>
-                                                    <li><a href="#">Farm Facilities &amp; Equipment</a></li>
-                                                    <li class="see-more"><a href="#"><strong>See More Categories</strong></a></li>
-                                                    <li class="quick-title">HOT PRODUCTS:</li>
-                                                    <li class="quick-word"><a href="#">Tomato Paste</a></li>
-                                                    <li class="quick-word"><a href="#">Garlic</a></li>
-                                                    <li class="quick-word"><a href="#">Fertilizer</a></li>
-                                                </ul>-->
-
+                                               
                                                 <div class="col-lg-4">
-                                                    <a href="#" target="_blank">
-                                                        <img src="assets/2.jpg" alt="Food Additives" class="img-responsive">
-                                                    </a>
+                                                    <%= link_to (image_tag category.picture.url(:thumb),  class:"img-responsive resize-with"), category %>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,98 +99,60 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade in active centad" id="home">
                                 <div class="col-lg-12 pad">
-                                    <div class="row pad ">
-                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
-                                            <p>Cable ties</p>
-                                        </div>
-                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
-                                            <p>IV Mount</p>
-                                        </div>
-                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
-                                            <p>Duvet</p>
-                                        </div>
-                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
-                                            <p>Compressor</p>
-                                        </div>
-                                    </div>
                                     <div class="row pad">
-                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
-                                            <p>Passenger Ellevator</p>
+                                      <% @sponsored_products.each do |product| %>
+                                        <div class="col-md-3">
+                                            <div class="media">
+                                                <div class="media-down">   
+                                                <%= link_to (image_tag  product.pictures[0].url, class: "media-object img img-responsive fixed-height"), product_path(product) %>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading product-header"><strong><%= truncate product.title, length: 80 %></strong></h5>
+                                                   
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
-                                            <p>Plush Tov</p>
-                                        </div>
-                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
-                                            <p>Bathroom Wall<br> Tile</p>
-                                        </div>
-                                        <div class="col-md-3"> <img src="assets/3.jpg" alt="" class="img img-responsive full">
-                                            <p>LED Table Light</p>
-                                        </div>
+                                      <% end %>  
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="profile">
                                 <div class="col-lg-12">
                                     <div class="row pad ">
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Cable ties</p>
+                                     <% @sponsored_products.each do |product| %>
+                                        <div class="col-md-3">
+                                            <div class="media">
+                                                <div class="media-down">   
+                                                <%= link_to (image_tag  product.pictures[0].url, class: "media-object img img-responsive fixed-height"), product_path(product) %>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading product-header"><strong><%= truncate product.title, length: 80 %></strong></h5>
+                                                   
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>IV Mount</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Duvet</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Compressor</p>
-                                        </div>
-                                    </div>
-                                    <div class="row pad">
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Passenger Ellevator</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Plush Tov</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Bathroom Wall<br> Tile</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>LED Table Light</p>
-                                        </div>
+                                      <% end %>  
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="messages">
                                 <div class="col-lg-12">
                                     <div class="row pad ">
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Cable ties</p>
+                                      <% @hot_products.each do |product| %>
+                                        <div class="col-md-3">
+                                            <div class="media">
+                                                <div class="media-down">   
+                                                <%= link_to (image_tag  product.pictures[0].url, class: "media-object img img-responsive fixed-height"), product_path(product) %>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading product-header"><strong><%= truncate product.title, length: 80 %></strong></h5>
+                                                   
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>IV Mount</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Duvet</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Compressor</p>
-                                        </div>
+                                      <% end %>  
                                     </div>
-                                    <div class="row pad">
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Passenger Ellevator</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Plush Tov</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>Bathroom Wall<br> Tile</p>
-                                        </div>
-                                        <div class="col-md-2"> <img src="assets/3.jpg" alt="" class="img-responsive full">
-                                            <p>LED Table Light</p>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
 
@@ -469,4 +381,4 @@
             </div>
         </div>
     </div>
-</div>
+

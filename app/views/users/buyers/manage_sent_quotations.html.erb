@@ -1,0 +1,47 @@
+
+ <div class="row col-md-12">
+                    <div class="row">
+                        <%= render partial: 'users/buyers/navbar' %>
+                         
+                        <div class="col-lg-12">
+    <!-- beginning of left panel-->
+                       <%= render partial: 'users/buyers/sidenav' %>
+
+
+    <!-- end of left panel, beginning of right panel--> 
+                    <div class="col-lg-10 no-pad left-pad-2">
+                        <div class="col-lg-10 no-pad left-pad-2">
+                        <h4>Manage Sent Quotations</h4>
+                         <div class="well">You didn't post any sourcing requests yet. To receive quotations from verified suppliers. <%= link_to "Post Sourcing Request Now", request_qoutation_user_path(current_user.id) %></div>   
+                       </div>
+                        
+                    </div>
+    <!-- end of right panel-->
+                        <div class="col-lg-12"> 
+                        <div class="row top-pad ">
+							<div class="col-lg-2"></div>
+                            <div class="col-lg-9">
+                               <div class="row pad">
+                                        <div class="col-lg-11">
+                                            <h5>This is not what you are looking for? <span class="red"><i class="fa fa-podcast" aria-hidden="true"></i>  Post Sourcing Request to Source now</span>
+                                            </h5>
+                                            <h5 class="n-pad"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Trade Alert: delivering the latest product Trends &amp; Industry News straight to your inbox</h5>
+                                        </div>
+                                        <div  class="col-lg-1"></div>
+                                        <div class="col-lg-8">
+                                            <div class="input">
+                                                <input type="text" class="form-control" placeholder="Your Email" aria-describedby="basic-addon2">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 ">
+                                            <button type="button" class="btn btn-block bg-red wyt b-red">Subscribe</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+					</div> 
+
+                        </div>
+                    </div>
+                    </div>

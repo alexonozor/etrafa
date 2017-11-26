@@ -11,20 +11,47 @@
             <a href="#">supplier discovery</a>
             <a href="#">trade/exhibition</a>
           <% unless current_user %>
-            <a href="#"> Login</a>
             <%= link_to '<i class="fa fa-user fa-lg" aria-hidden="true"></i> log in'.html_safe, login_path %>
-            <span class="dropdown">
-            <a href="#" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                register
-            <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><%= link_to "Supplier", register_path %></li>
-                <li><%= link_to "Buyer", register_path %></li>
-            </ul>
-            </span>
+            <%= link_to "Sign up", register_path %>
           <% end %>
         </nav>
     </div>
     </div>
   <!-- logo and nav holder ends here -->
+
+  <div class="row col-lg-12 ">
+  <!-- begining of search pane -->
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle b-red" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+            <!-- /btn-group -->
+            <input type="text" class="form-control b-red" aria-label="...">
+            <span class="input-group-btn ">
+                <button class="btn btn-default bg-red b-red b-col full" type="button"><i class="fa fa-search fa-lg" aria-hidden="false"></i></button>
+            </span>
+          </div>
+          <!-- /input-group -->
+        </div>
+        <!-- /.col-lg-6 -->
+      </div>
+    </div>
+    <!-- begining of search pane button -->
+    <div class="col-md-3 ">
+       <%= link_to "<i class='fa fa-podcast red'></i> post sourcing request".html_safe, new_posting_source_path, class:"btn btn-default col-lg-12 red" %>
+    </div>
+  </div>
+</div>
+<!-- end of search pane and button div holder 
+            and beginning of maincontent holder -->

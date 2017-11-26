@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-lg-10">
+        <div class="col-lg-12"><h3 class="red">Company Information</h3></div>
+        <div class="row">
+        <div class="col-lg-12">
+             <table class="table table-bordered">
+                <caption> Account Registered in: <%= @company.created_at.year %></caption>
+                <tr>
+                    <td>Company Name</td>
+                    <td><%= @company.name %></td>
+                </tr>
+                <tr>
+                    <td>Bussiness Type</td>
+                    <td><%= @company.business_type %></td>
+                </tr>
+                <tr>
+                    <td>Business Range</td>
+                    <td><%=  @company.categories.map { |a| link_to a.name, ""  }.join(',').html_safe %></td>
+                </tr>select
+                <tr>
+                    <td>Profile</td>
+                    <td><%=  @company.profile %></td>
+                </tr>
+                <tr>
+                    <td>Number of Employees</td>
+                    <td><%= @company.number_of_employees %></td>
+                </tr>
+                <tr>
+                    <td>Website</td>
+                    <td><%= @company.website %></td>
+                </tr>
+                <tr>
+                    <td>Tradmark</td>
+                    <td><%= @company.trademark %></td>
+                </tr>
+
+                <tr>
+                    <td>Year of Establishment</td>
+                    <td><%= @company.year_of_establishment %></td>
+                </tr>
+
+                <tr>
+                    <td>verified by</td>
+                    <td><%= @company.verified_by %></td>
+                </tr>
+
+                <tr>
+                    <td>Factory address</td>
+                    <td><%= @company.factory_address %></td>
+                </tr>
+
+                <tr>
+                    <td>R & D Capacity</td>
+                    <td><%= @company.rd_Capacity %></td>
+                </tr>
+
+                <tr>
+                    <td>Company Phone Number</td>
+                    <td><%= @company.company_phone_number %></td>
+                </tr>
+
+                <tr>
+                    <td>Show Room</td>
+                    <td><%= @company.show_room %></td>
+                </tr>
+                </table>
+                <%= link_to "Edit companie's information", suppliyer_panel_company_edit_path(@company.id), class: "btn btn-default"  %>
+                
+        </div>
+</div>
+            
+        <div class="col-lg-12">
+            <p class="text-center"> Copyright &copy; 2017 etrafa.com (Nig. Co. Reg. No. 1234567890)<br>Machine: juhgfsjhb.etrafa.com <br> <a href="#" class="blue">Terms of use</a> | <a href="#" class="blue">Privacy Policy</a> | <a href="#" class="blue">Security Measures</a> | <a href="#" class="blue">Manufacturers</a></p>
+        </div>
+    </div>
+    <%= render partial: "users/suppliyers/sidebar_panel" %>
+</div>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posting Sources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Purchase quantity</th>
+      <th>Quantity type</th>
+      <th>Valid to</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posting_sources.each do |posting_source| %>
+      <tr>
+        <td><%= posting_source.name %></td>
+        <td><%= posting_source.description %></td>
+        <td><%= posting_source.purchase_quantity %></td>
+        <td><%= posting_source.quantity_type %></td>
+        <td><%= posting_source.valid_to %></td>
+        <td><%= link_to 'Show', posting_source %></td>
+        <td><%= link_to 'Edit', edit_posting_source_path(posting_source) %></td>
+        <td><%= link_to 'Destroy', posting_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Posting Source', new_posting_source_path %>

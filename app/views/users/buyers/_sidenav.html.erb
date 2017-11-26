@@ -1,0 +1,17 @@
+ <div class="col-lg-2 no-pad">
+    <div class="row">           
+        <div class="col-lg-12">
+            <ul class="first-level">
+            <li class="holding">
+                <%= link_to "Post Sourcing Request<i class='fa fa-caret-right pull-right'></i>".html_safe, request_qoutation_user_path(current_user.id) %>
+            </li>
+            <li class="holding">
+                <%= link_to "Manage Received Quotations<i class='fa fa-caret-right pull-right'></i>".html_safe, manage_received_quotations_user_path(current_user.id) %>
+            </li>
+            <li class="holding">
+                <%= link_to "Manage Send Quotations<i class='fa fa-caret-right pull-right'></i>".html_safe, manage_sent_quotations_user_path(current_user.id) %>
+            </li>
+            </ul>
+        </div>
+    </div>
+</div>

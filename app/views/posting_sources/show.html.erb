@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @posting_source.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @posting_source.description %>
+</p>
+
+<p>
+  <strong>Purchase quantity:</strong>
+  <%= @posting_source.purchase_quantity %>
+</p>
+
+<p>
+  <strong>Quantity type:</strong>
+  <%= @posting_source.quantity_type %>
+</p>
+
+<p>
+  <strong>Valid to:</strong>
+  <%= @posting_source.valid_to %>
+</p>
+
+<%= link_to 'Edit', edit_posting_source_path(@posting_source) %> |
+<%= link_to 'Back', posting_sources_path %>
