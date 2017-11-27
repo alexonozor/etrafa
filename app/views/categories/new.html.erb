@@ -1,6 +1,8 @@
   <% @categories.each do |category| %>
     <details>
-        <summary><%= category.name %></summary>
+        <summary>
+        <%= category.name %> <%= link_to "Add root category", new_category_path(:category_id => category.id), class: "add-category", remote: true  %>
+        </summary>
          <% category.children.each do |a| %>
           <details class="children">
            <summary>
